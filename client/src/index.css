@@ -29,10 +29,6 @@
     width: 50%;
 }
 
-.username__input.error {
-    border: 1px solid #e7195a;;
-}
-
 .home__cta {
     width: 200px;
     padding: 10px;
