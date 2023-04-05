@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { SocketContext } from '../context/SocketContext';
 
-const ChatFooter = ({ socket }) => {
+const ChatFooter = () => {
     const [message, setMessage] = useState('');
+    const socket = useContext(SocketContext);
 
     const handleTyping = () => {
         socket.emit('typing', `${localStorage.getItem('userName')} is typing`)
@@ -21,7 +23,7 @@ const ChatFooter = ({ socket }) => {
         setMessage('');
         socket.emit('typing', ``)
     };
-    
+
     return (
         <div className="chat__footer">
             <form className="form" onSubmit={handleSendMessage}>
@@ -32,7 +34,7 @@ const ChatFooter = ({ socket }) => {
                     value={message}
                     onChange={(e) => {
                         setMessage(e.target.value)
-                        if(e.target.value === "") {
+                        if (e.target.value === "") {
                             socket.emit('typing', ``)
                         }
                     }}
