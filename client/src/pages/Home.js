@@ -23,11 +23,12 @@ const Home = () => {
                 minLength={6}
                 name="username"
                 id="username"
-                className={`username__input ${!userName && "error"}`}
+                className="username__input"
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
+                required
             />
-            <button className="home__cta" disabled={!userName} >SIGN IN</button>
+            <button className="home__cta">SIGN IN</button>
         </form>
     );
 };
