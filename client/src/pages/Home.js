@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SocketContext } from '../context/SocketContext';
 
-const Home = ({ socket }) => {
+const Home = () => {
     const navigate = useNavigate();
     const [userName, setUserName] = useState('');
+    const socket = useContext(SocketContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();

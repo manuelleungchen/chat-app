@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { SocketContext } from '../context/SocketContext';
 
-const ChatBar = ({ socket }) => {
+const ChatBar = () => {
     const [users, setUsers] = useState([]);
+    const socket = useContext(SocketContext);
 
     useEffect(() => {
         socket.on('newUserResponse', (data) => setUsers(data));

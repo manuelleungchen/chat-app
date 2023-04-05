@@ -1,12 +1,15 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import ChatBar from '../components/ChatBar';
 import ChatBody from '../components/ChatBody';
 import ChatFooter from '../components/ChatFooter';
+import { SocketContext } from '../context/SocketContext';
 
-const ChatPage = ({ socket }) => {
+const ChatPage = () => {
     const [messages, setMessages] = useState([]);
     const [typingStatus, setTypingStatus] = useState('');
     const lastMessageRef = useRef(null);
+
+    const socket = useContext(SocketContext);
 
     useEffect(() => {
         socket.on('messageResponse', (data) => setMessages([...messages, data]));
